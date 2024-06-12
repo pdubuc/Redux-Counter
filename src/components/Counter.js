@@ -1,14 +1,24 @@
+// Import these custom Redux hooks:
 import { useSelector, useDispatch } from "react-redux";
 import { counterActions } from "../store/counter";
 
 import classes from "./Counter.module.css";
 
 const Counter = () => {
+  // Lesson 293. This hook will dispatch an action against our Redux store
   const dispatch = useDispatch();
+  // Lesson 292. We pass a function to useSelector that determines which piece of data to extract from our store
+  // Being able to just get a slice of the overall state object is really valuable
+  // Redux automatically sets up a subscription to the Redux store for this Component
+  // So the Component will automatically and receive the latest counter whenever that data changes
+
+  // Lesson 302. We had to adjust the state idenfiers to match the pointer to the store defined in the reducer map (index.js)
+  // to drill into our specific state slices: added .counter
   const counter = useSelector((state) => state.counter.counter);
   const show = useSelector((state) => state.counter.showCounter);
 
   const incrementHandler = () => {
+    // We dispatch an action (object with a type property)
     dispatch(counterActions.increment());
   };
 

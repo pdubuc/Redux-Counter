@@ -10,6 +10,7 @@ function App() {
   const isAuth = useSelector(state => state.auth.isAuthenticated);
 
   return (
+    //Lesson 302. Imported the built-in Fragment component so we can have adjacent jsx elements
     <Fragment>
       <Header />
       {!isAuth && <Auth />}
